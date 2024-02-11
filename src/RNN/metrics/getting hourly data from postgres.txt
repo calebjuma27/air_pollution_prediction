@@ -1,0 +1,34 @@
+DROP TABLE IF EXISTS sensor5127;
+ 
+ 
+CREATE TABLE sensor5127
+ 
+ 
+AS(SELECT
+ 
+ 
+  date_trunc('day', timestamp) AS timestamp,
+ 
+ 
+  sensorid AS sensorid,
+ 
+ 
+  avg(p1) AS p1day,
+ 
+ 
+  avg(p2) AS p2day,
+ 
+ 
+  geom as geom
+ 
+ 
+
+ 
+ 
+FROM luftdaten
+ 
+ 
+WHERE timestamp BETWEEN '2019-05-28 00:00:00' AND '2019-11-11 23:59:59' AND sensorid=5127
+ 
+ 
+GROUP BY date_trunc('day', timestamp),sensorid,geom);
